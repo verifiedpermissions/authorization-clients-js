@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - name: Build the library
+        run: npm run build
+      - name: Run unit tests
+        run: npm run test
