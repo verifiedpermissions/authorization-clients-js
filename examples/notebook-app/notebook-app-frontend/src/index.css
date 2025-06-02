@@ -1,0 +1,13 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #ecdeee;
+}

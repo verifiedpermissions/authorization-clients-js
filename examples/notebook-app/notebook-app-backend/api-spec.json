@@ -1,0 +1,147 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "A example document",
+        "version": "1"
+    },
+    "paths": {
+        "/notebooks": {
+            "get": {
+                "responses": {
+                    "default": {
+                        "description": "Responses object not provided for this route"
+                    }
+                }
+            },
+            "post": {
+                "responses": {
+                    "default": {
+                        "description": "Responses object not provided for this route"
+                    }
+                }
+            }
+        },
+        "/notebooks/{id}": {
+            "get": {
+                "operationId": "getNotebookById",
+                "x-cedar": {
+                    "appliesToResourceTypes": [
+                        "Notebook"
+                    ]
+                },
+                "responses": {
+                    "200": {
+                        "description": "Get notebook by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Notebook"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "operationId": "putNotebook",
+                "x-cedar": {
+                    "appliesToResourceTypes": [
+                        "Notebook"
+                    ]
+                },
+                "responses": {
+                    "200": {
+                        "description": "Put notebook",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Notebook"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "deleteNotebook",
+                "x-cedar": {
+                    "appliesToResourceTypes": [
+                        "Notebook"
+                    ]
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Responses object not provided for this route"
+                    }
+                }
+            }
+        },
+        "/notebooks/shared-with-me": {
+            "get": {
+                "responses": {
+                    "default": {
+                        "description": "Responses object not provided for this route"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Notebook": {
+                "title": "A notebook object",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "owner": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "owner",
+                    "content"
+                ]
+            }
+        }
+    }
+}
