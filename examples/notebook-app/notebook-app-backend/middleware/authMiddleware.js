@@ -3,7 +3,7 @@ const jwksClient = require('jwks-rsa');
 
 // Initialize the JWKS client
 const client = jwksClient({
-  jwksUri: 'https://cognito-idp.us-east-1.amazonaws.com/us-east-1_u7btsbyLO/.well-known/jwks.json',
+  jwksUri: `https://cognito-idp.us-east-1.amazonaws.com/${process.env.USERPOOL_ID}/.well-known/jwks.json`,
   cache: true,
   cacheMaxEntries: 5,
   cacheMaxAge: 600000 // 10 minutes
@@ -34,7 +34,7 @@ const verifyToken = (req, res, next) => {
   // Verify the token
   jwt.verify(token, getSigningKey, {
     algorithms: ['RS256'],
-    issuer: `https://cognito-idp.us-east-1.amazonaws.com/us-east-1_u7btsbyLO`
+    issuer: `https://cognito-idp.us-east-1.amazonaws.com/${process.env.USERPOOL_ID}`
   }, (err, decoded) => {
     if (err) {
       console.error('JWT verification error:', err);

@@ -1,4 +1,4 @@
-/node_modules
+node_modules
 
 # Ignore test-related files
 /coverage.data
@@ -6,3 +6,5 @@
 
 # Build files
 /dist
+
+.DS_Store

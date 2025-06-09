@@ -133,6 +133,9 @@
                     },
                     "content": {
                         "type": "string"
+                    },
+                    "public": {
+                        "type": "boolean"
                     }
                 },
                 "required": [

@@ -5,8 +5,10 @@ import { AuthProvider } from 'react-oidc-context';
 import './index.css';
 import App from './App.tsx';
 
+const USERPOOL_ID = 'us-east-1_u7btsbyLO';
+
 const cognitoAuthConfig = {
-    authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_u7btsbyLO",
+    authority: `https://cognito-idp.us-east-1.amazonaws.com/${USERPOOL_ID}`,
     client_id: "6a7vkm488bfbsl68ulu2pgeucu",
     redirect_uri: "http://localhost:5173",
     response_type: "code",

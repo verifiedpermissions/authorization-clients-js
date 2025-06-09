@@ -2,14 +2,16 @@ let notebooks = [
   {
     id: '0',
     name: 'Seneca',
-    owner: 'public',
-    content: '"We suffer more often in imagination than in reality. True happiness is... to enjoy the present, without anxious dependence upon the future. Difficulties strengthen the mind, as labor does the body.'
+    owner: 'x5e2612d-4eb7-4265-b4b5-4c845a2825f7',
+    content: '"We suffer more often in imagination than in reality. True happiness is... to enjoy the present, without anxious dependence upon the future. Difficulties strengthen the mind, as labor does the body.',
+    public: true,
   },
   {
     id: '1',
     name: 'Marcus Aurelius',
-    owner: 'public',
-    content: 'The best revenge is to be unlike him who performed the injury. You have power over your mind, not outside events. Realize this, and you will find strength. "Very little is needed to make a happy life; it is all within yourself, in your way of thinking".'
+    owner: 'x5e2612d-4eb7-4265-b4b5-4c845a2825f7',
+    content: 'The best revenge is to be unlike him who performed the injury. You have power over your mind, not outside events. Realize this, and you will find strength. "Very little is needed to make a happy life; it is all within yourself, in your way of thinking".',
+    public: true,
   },
   {
     id: '2',
@@ -45,7 +47,7 @@ let notebooks = [
 
 class NotebooksRepository {
     async findByOwner(ownerId) {
-        return notebooks.filter(notebook => notebook.owner === 'public' || notebook.owner === ownerId);
+        return notebooks.filter(notebook => notebook.public || notebook.owner === ownerId);
     }
     async saveNotebook(notebook) {
         notebooks.push(notebook);
@@ -53,11 +55,11 @@ class NotebooksRepository {
     async findById(notebookId) {
         return notebooks.find(notebook => notebook.id === notebookId);
     }
-    async putNotebook(notebook) {
-        const notebookId = notebook.id;
-        const n = notebooks.find(notebook => notebook.id === notebookId);
+    async putNotebook(notebookId, notebook) {
+        console.log("putting notebook in repo", notebookId, notebook);
+        const n = notebooks.find(notebook => notebook.id == notebookId);
         if (!n) {
-          notebooks.push(notebook);
+          return null;
         } else {
           n.name = notebook.name;
           n.content = notebook.content;

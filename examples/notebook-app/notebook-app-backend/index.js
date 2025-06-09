@@ -8,7 +8,7 @@ const { VerifiedPermissionsClient, ListPoliciesCommand } = require("@aws-sdk/cli
 const { notebooksRepository } = require('./notebookRepository');
 const verifyToken = require('./middleware/authMiddleware');
 const oaig = require('express-openapi-generator');
-const { ExpressAuthorizationMiddleware, CedarInlineAuthorizationEngine } = require('@cedar-policy/authorization-for-expressjs');
+const { ExpressAuthorizationMiddleware } = require('@cedar-policy/authorization-for-expressjs');
 const { type } = require('os');
 const { AVPAuthorizationEngine } = require('@verifiedpermissions/authorization-clients');
 
@@ -96,6 +96,7 @@ const notebookSchema = {
         name: { type: 'string' },
         owner: { type: 'string' },
         content: { type: 'string' },
+        public: { type: 'boolean' },
     },
     required: ['id', 'name', 'owner', 'content'],
 };
@@ -176,7 +177,7 @@ app.put(
         }
     }),
     async (req, res) => {
-        const notebook = await notebooksRepository.putNotebook(req.body);
+        const notebook = await notebooksRepository.putNotebook(req.params.id, req.body);
         if (notebook) {
             res.json(notebook);
         } else {

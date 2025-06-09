@@ -42,10 +42,6 @@
           "resourceTypes": [
             "Application"
           ]
-        },
-        "annotations": {
-          "httpVerb": "get",
-          "httpPathTemplate": "/notebooks"
         }
       },
       "post /notebooks": {
@@ -60,10 +56,6 @@
           "resourceTypes": [
             "Application"
           ]
-        },
-        "annotations": {
-          "httpVerb": "post",
-          "httpPathTemplate": "/notebooks"
         }
       },
       "getNotebookById": {
@@ -78,10 +70,6 @@
           "resourceTypes": [
             "Notebook"
           ]
-        },
-        "annotations": {
-          "httpVerb": "get",
-          "httpPathTemplate": "/notebooks/{id}"
         }
       },
       "putNotebook": {
@@ -96,10 +84,6 @@
           "resourceTypes": [
             "Notebook"
           ]
-        },
-        "annotations": {
-          "httpVerb": "put",
-          "httpPathTemplate": "/notebooks/{id}"
         }
       },
       "deleteNotebook": {
@@ -114,10 +98,6 @@
           "resourceTypes": [
             "Notebook"
           ]
-        },
-        "annotations": {
-          "httpVerb": "delete",
-          "httpPathTemplate": "/notebooks/{id}"
         }
       },
       "get /notebooks/shared-with-me": {
@@ -132,15 +112,8 @@
           "resourceTypes": [
             "Application"
           ]
-        },
-        "annotations": {
-          "httpVerb": "get",
-          "httpPathTemplate": "/notebooks/shared-with-me"
         }
       }
-    },
-    "annotations": {
-      "mappingType": "SimpleRest"
     },
     "commonTypes": {
       "Notebook": {
