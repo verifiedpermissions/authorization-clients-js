@@ -5,7 +5,7 @@ import { AuthProvider } from 'react-oidc-context';
 import './index.css';
 import App from './App.tsx';
 
-const USERPOOL_ID = 'us-east-1_u7btsbyLO';
+const USERPOOL_ID = import.meta.env.VITE_USERPOOL_ID;
 
 const cognitoAuthConfig = {
     authority: `https://cognito-idp.us-east-1.amazonaws.com/${USERPOOL_ID}`,
