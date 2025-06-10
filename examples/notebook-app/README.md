@@ -54,7 +54,7 @@ The backend will run on http://localhost:3000
    npm install
    ```
 
-3. Go to main.tsx and replace the `USERPOOL_ID` and `AWS_REGION` variables near the top of the file with appropriate values.
+3. Make sure the `VITE_USERPOOL_ID` env var is set with an appropriate value matching the backend.
 
 4. Start the development server:
    ```bash
