@@ -62,7 +62,21 @@
         "appliesTo": {
           "context": {
             "type": "Record",
-            "attributes": {}
+            "attributes": {
+              "pathParameters": {
+                "type": "Record",
+                "attributes": {
+                  "id": {
+                    "type": "String",
+                    "required": true
+                  }
+                }
+              },
+              "queryStringParameters": {
+                "type": "Record",
+                "attributes": {}
+              }
+            }
           },
           "principalTypes": [
             "User"
@@ -76,7 +90,21 @@
         "appliesTo": {
           "context": {
             "type": "Record",
-            "attributes": {}
+            "attributes": {
+              "pathParameters": {
+                "type": "Record",
+                "attributes": {
+                  "id": {
+                    "type": "String",
+                    "required": true
+                  }
+                }
+              },
+              "queryStringParameters": {
+                "type": "Record",
+                "attributes": {}
+              }
+            }
           },
           "principalTypes": [
             "User"
@@ -90,7 +118,21 @@
         "appliesTo": {
           "context": {
             "type": "Record",
-            "attributes": {}
+            "attributes": {
+              "pathParameters": {
+                "type": "Record",
+                "attributes": {
+                  "id": {
+                    "type": "String",
+                    "required": true
+                  }
+                }
+              },
+              "queryStringParameters": {
+                "type": "Record",
+                "attributes": {}
+              }
+            }
           },
           "principalTypes": [
             "User"
@@ -120,16 +162,20 @@
         "type": "Record",
         "attributes": {
           "id": {
-            "type": "String"
+            "type": "String",
+            "required": true
           },
           "name": {
-            "type": "String"
+            "type": "String",
+            "required": true
           },
           "owner": {
-            "type": "String"
+            "type": "String",
+            "required": true
           },
           "content": {
-            "type": "String"
+            "type": "String",
+            "required": true
           },
           "public": {
             "type": "Boolean"
