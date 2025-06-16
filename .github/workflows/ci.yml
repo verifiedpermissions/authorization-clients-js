@@ -27,7 +27,16 @@ jobs:
           git secrets --scan-history
 
       - run: npm ci
+
       - name: Build the library
         run: npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AVP_ACCESS_ROLE }}
+          role-session-name: oidc_federation_vp_authz-clients-js
+          aws-region: ${{ vars.AWS_REGION }}
+          
       - name: Run unit tests
         run: npm run test
