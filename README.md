@@ -9,7 +9,7 @@ The `AVPAuthorizationEngine` class provides an implementation of the Cedar `Auth
 ## Installation
 
 ```bash
-npm install verifiedpermissions/authorization-clients-js
+npm install @verifiedpermissions/authorization-clients-js
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ npm install verifiedpermissions/authorization-clients-js
 ### Basic Setup
 
 ```typescript
-import { AVPAuthorizationEngine } from 'verifiedpermissions/authorization-clients-js';
+import { AVPAuthorizationEngine } from '@verifiedpermissions/authorization-clients-js';
 
 const engine = new AVPAuthorizationEngine({
     policyStoreId: 'your-policy-store-id',
