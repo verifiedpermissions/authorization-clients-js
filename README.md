@@ -1,10 +1,10 @@
 # Verified Permissions Authorization Clients
 
-This package provides a TypeScript/JavaScript client for AWS Verified Permissions that implements the Cedar Authorization Engine interface.
+This package provides a TypeScript/JavaScript client for AWS Verified Permissions (AVP) that implements the Cedar Authorization Engine interface. For more information about the Cedar Authorization Engine, see [authorization-for-expressjs](https://github.com/cedar-policy/authorization-for-expressjs/).
 
 ## Overview
 
-The `AVPAuthorizationEngine` class provides an implementation of the Cedar `AuthorizationEngine` interface that integrates with Cedar framework integrations. This package allows you to perform authorization checks using either IsAuthorized or IsAuthorizedWithToken.
+The `AVPAuthorizationEngine` class provides an implementation of the Cedar `AuthorizationEngine` interface that integrates with Cedar framework integrations. This package allows you to perform authorization checks using either the [IsAuthorized](https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorized.html) or [IsAuthorizedWithToken](https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html) AVP APIs.
 
 ## Installation
 
@@ -29,18 +29,18 @@ const engine = new AVPAuthorizationEngine({
 
 The `AVPAuthorizationEngine` constructor accepts the following properties:
 
-- `policyStoreId` (required): The ID of your AWS Verified Permissions policy store
+- `policyStoreId` (required): The ID of your Amazon Verified Permissions policy store
 - `callType` (required): The type of authorization call to make. Can be one of:
-  - `'isAuthorized'`: Direct entity-based authorization (you need to handle authn and pass a correct principal entity)
-  - `'accessToken'`: IsAuthorizedWithToken using access tokens (You can pass a dummy principal entity that will be used to call IsAuthorizedWithToken)
-  - `'identityToken'`: IsAuthorizedWithToken using identity tokens (You can pass a dummy principal entity that will be used to call IsAuthorizedWithToken)
-- `credentials` (optional): AWS credentials or credential provider for the Verified Permissions client
+  - `'isAuthorized'`: Direct entity-based authorization (you need to handle authentication and pass a correct principal entity)
+  - `'accessToken'`: IsAuthorizedWithToken using access tokens (You can pass an access token as the principal entity that will be used to call IsAuthorizedWithToken)
+  - `'identityToken'`: IsAuthorizedWithToken using identity tokens (You can pass an identity token as the principal entity that will be used to call IsAuthorizedWithToken)
+- `credentials` (optional): AWS credentials or credential provider for the Amazon Verified Permissions client
 
 ### Authorization Methods
 
 #### Entity-Based Authorization
 
-When using `callType: 'isAuthorized'`, the engine performs authorization checks by calling IsAuthorized:
+When using `callType: 'isAuthorized'`, the engine performs authorization checks by calling `IsAuthorized`:
 
 ```typescript
 const request = {
@@ -57,7 +57,7 @@ const result = await engine.isAuthorized(request, entities);
 
 #### Token-Based Authorization
 
-When using `callType: 'accessToken'` or `'identityToken'`, the engine performs authorization by calling IsAuthorizedWithToken:
+When using `callType: 'accessToken'` or `'identityToken'`, the engine performs authorization by calling `IsAuthorizedWithToken`:
 
 ```typescript
 const request = {
@@ -74,7 +74,7 @@ const result = await engine.isAuthorized(request, entities);
 
 ### Authorization Results
 
-The `isAuthorized` method returns a promise that resolves to an `AuthorizationResult`:
+Both APIs return a promise that resolves to an `AuthorizationResult`:
 
 - Allow Result:
 ```typescript
@@ -112,6 +112,10 @@ The engine handles various error cases:
 - Invalid call type will throw an error during initialization
 - Authorization failures return a deny result
 - Authorization errors (e.g., network issues, invalid tokens) return an error result
+
+## Complete Example
+
+Check out [express-petstore](https://github.com/verifiedpermissions/examples/tree/main/express-petstore) for a complete implementation of a protected API using this middleware.
 
 ## Security
 
