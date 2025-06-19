@@ -1,0 +1,33 @@
+name: Publish Package to npmjs
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.SECRETS_MANAGER_ROLE }}
+          role-session-name: oidc_federation_cedar_team
+          aws-region: ${{ vars.AWS_REGION }}
+      
+      - name: Get NPM token from Secrets Manager
+        id: npm-token
+        run: |
+          echo "token=$(aws secretsmanager get-secret-value --secret-id NPM_TOKEN --query SecretString --output text)" >> $GITHUB_OUTPUT
+
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ steps.npm-token.outputs.token }}

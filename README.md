@@ -120,3 +120,11 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This project is licensed under the Apache-2.0 License.
+
+## Publishing
+
+Publishing to npm is done according to these links:
+
+- https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-nodejs-packages  
+- https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release  
+
