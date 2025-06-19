@@ -1,6 +1,6 @@
 {
   "name": "@verifiedpermissions/authorization-clients-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Verified permissions clients to interact with AWS Verified Permissions more seamlessly, using Cedar framework integrations",
   "main": "dist/index.js",
   "module": "./dist/index.mjs",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/veririedpermissions/authorization-clients-js.git"
+    "url": "git+https://github.com/verifiedpermissions/authorization-clients-js.git"
   },
   "keywords": [
     "verified permissions",
@@ -23,9 +23,9 @@
   "author": "swolebrain",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/veririedpermissions/authorization-clients-js/issues"
+    "url": "https://github.com/verifiedpermissions/authorization-clients-js/issues"
   },
-  "homepage": "https://github.com/veririedpermissions/authorization-clients-js#readme",
+  "homepage": "https://github.com/verifiedpermissions/authorization-clients-js#readme",
   "dependencies": {
     "@aws-sdk/client-verifiedpermissions": "^3.806.0",
     "@cedar-policy/cedar-authorization": "^0.1.0"
