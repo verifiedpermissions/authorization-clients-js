@@ -28,7 +28,7 @@
   "homepage": "https://github.com/verifiedpermissions/authorization-clients-js#readme",
   "dependencies": {
     "@aws-sdk/client-verifiedpermissions": "^3.806.0",
-    "@cedar-policy/cedar-authorization": "^0.1.0"
+    "@cedar-policy/cedar-authorization": "^0.2.0"
   },
   "devDependencies": {
     "tsup": "^8.4.0",
