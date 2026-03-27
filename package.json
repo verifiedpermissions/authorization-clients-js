@@ -1,6 +1,6 @@
 {
   "name": "@verifiedpermissions/authorization-clients-js",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Verified permissions clients to interact with AWS Verified Permissions more seamlessly, using Cedar framework integrations",
   "main": "dist/index.js",
   "module": "./dist/index.mjs",
